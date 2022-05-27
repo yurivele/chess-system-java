@@ -5,7 +5,7 @@ import boardgame.Position;
 public class ChessPosition {
 	private int row;
 	private char column;
-	public ChessPosition(int row, char column) {
+	public ChessPosition(char column, int row) {
 		if(column < 'a' || column > 'h' || row < 1 || row > 8) {
 			throw new ChessException("Error instantiating ChessPosition. Valid values are from a1 to h8");
 		}
@@ -25,13 +25,12 @@ public class ChessPosition {
 	}
 	
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition(8 - position.getRow(), (char)('a' - position.getColumn()));
+		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
 	}
 	
 	@Override
-	
 	public String toString() {
-		return "" + column + row;
+		return "" + row + column;
 	}
 
 }
